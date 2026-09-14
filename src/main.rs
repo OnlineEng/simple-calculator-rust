@@ -21,46 +21,50 @@ Choose an option (1-5): ");
         let choice = read_input();
         if choice == 1 {
             // add
-            println!("Enter first number:");
+            println!("\nEnter first number:");
             let num1 = read_input();
-            println!("Enter second number:");
+            println!("\nEnter second number:");
             let num2 = read_input();
-            println!("Result: {}\n", num1 + num2);
+            println!("\nResult: {}\n", num1 + num2);
         }
 
         else if choice == 2 {
             // subtract
-            println!("Enter first number:");
+            println!("\nEnter first number:");
             let num1 = read_input();
-            println!("Enter second number:");
+            println!("\nEnter second number:");
             let num2 = read_input();
-            println!("Result: {}\n", num1 - num2);
+            println!("\nResult: {}\n", num1 - num2);
         }
 
         else if choice == 3 {
             // multiply
-            println!("Enter first number:");
+            println!("\nEnter first number:");
             let num1 = read_input();
-            println!("Enter second number:");
+            println!("\nEnter second number:");
             let num2 = read_input();
-            println!("Result: {}\n", num1 * num2);
+            println!("\nResult: {}\n", num1 * num2);
         }
 
         else if choice == 4 {
             // divide
-            println!("Enter first number:");
-            let num1 = read_input();
-            println!("Enter second number:");
-            let num2 = read_input();
-            println!("Result: {}\n", num1 / num2);
+            // fix for decimal division -- converts to f64 AFTER, 0.0 change needed
+            println!("\nEnter first number: \n");
+            let num1 = read_input() as f64;
+            println!("\nEnter second number: \n");
+            let num2 = read_input() as f64;
+            if num2 != 0.0 {
+                println!("\nResult: {}\n", num1 / num2);
+            }
+            else {
+                println ! ("\nNot allowed to divide by 0, returning to main menu. \n");
+            }
         }
 
         else if choice == 5 {
             // exit
-            println!("Cya math nerd");
+            println!("Cya math nerd o7");
             std::process::exit(0);
         }
-
-
     }
 }
