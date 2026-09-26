@@ -7,25 +7,49 @@ fn read_input() -> i32 {
     result
 }
 
+// Moved each operation to a named function
+fn add(a: i32, b: i32) {
+    println!("\nResult: {}\n", a + b);
+}
+
+fn subtract(a: i32, b: i32) {
+    println!("\nResult: {}\n", a - b);
+}
+
+fn multiply(a: i32, b: i32) {
+    println!("\nResult: {}\n", a * b);
+}
+
+fn divide(a: f64, b: f64) {
+    if b == 0.0 {
+        println! ("\nNot allowed to divide by 0, returning to main menu. \n");
+    }
+    else {
+        println!("\nResult: {}\n", a / b);
+    }
+}
+
 fn main() {
     loop{
-        println!("--- Calculator --- \t
-1. Add \t
-2. Subtract \t
-3. Multiply \t
-4. Divide \t
-5. Exit \t
------------------\n
-Choose an option (1-5): ");
+        // Fixed misused `\t`, replaced with `println!`
+        println!("--- Calculator ---");
+        println!("1. Add");
+        println!("2. Subtract");
+        println!("3. Multiply");
+        println!("4. Divide");
+        println!("5. Exit");
+        println!("------------------\n");
+        println!("Choose an option (1-5): ");
 
         let choice = read_input();
+        // Changed inline function to `add()` calls
         if choice == 1 {
             // add
             println!("\nEnter first number:");
             let num1 = read_input();
             println!("\nEnter second number:");
             let num2 = read_input();
-            println!("\nResult: {}\n", num1 + num2);
+            add(num1, num2);
         }
 
         else if choice == 2 {
@@ -34,7 +58,7 @@ Choose an option (1-5): ");
             let num1 = read_input();
             println!("\nEnter second number:");
             let num2 = read_input();
-            println!("\nResult: {}\n", num1 - num2);
+            subtract(num1, num2);
         }
 
         else if choice == 3 {
@@ -43,22 +67,16 @@ Choose an option (1-5): ");
             let num1 = read_input();
             println!("\nEnter second number:");
             let num2 = read_input();
-            println!("\nResult: {}\n", num1 * num2);
+            multiply(num1, num2);
         }
 
         else if choice == 4 {
             // divide
-            // fix for decimal division -- converts to f64 AFTER, 0.0 change needed
             println!("\nEnter first number: \n");
             let num1 = read_input() as f64;
             println!("\nEnter second number: \n");
             let num2 = read_input() as f64;
-            if num2 != 0.0 {
-                println!("\nResult: {}\n", num1 / num2);
-            }
-            else {
-                println ! ("\nNot allowed to divide by 0, returning to main menu. \n");
-            }
+            divide(num1, num2); // Zero check now inside `divide` function
         }
 
         else if choice == 5 {
