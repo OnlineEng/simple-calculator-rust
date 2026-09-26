@@ -84,5 +84,9 @@ fn main() {
             println!("Cya math nerd o7");
             std::process::exit(0);
         }
+
+        else {
+            println!("\nInvalid option, please choose 1-5.\n");
+        }
     }
 }
